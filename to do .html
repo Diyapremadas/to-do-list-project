@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do List</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!--Stylesheet-->
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="newtask">
+            <input type="text" id="text" placeholder="Task to be done..">
+            <button id="push" onclick="add()">Add</button>
+            <button id="delete" onclick="dlt(event)">Clear All</button>
+        </div>
+        <div id="tasks"></div>
+    </div>
+    <!--Script-->
+    <script  >
+             function add(){
+                var taskInput = document.getElementById("text").value;
+                var taskText = taskInput.trim();
+                
+                if (taskText === "") {
+                    alert("Please enter a task");
+                } else {
+                    var tasksContainer = document.getElementById('tasks');
+                    
+                    
+                    var taskElement = document.createElement('div');
+                    taskElement.className = 'task';
+                    
+                    
+                    var taskSpan = document.createElement('span');
+                    taskSpan.textContent = taskText;
+                    
+                    
+                    var taskButton = document.createElement('button');
+                    taskButton.innerHTML = '<i class="fa fa-check"></i>';
+                    taskButton.onclick = function() {
+                        taskElement.classList.toggle('completed');
+                    };
+                    
+                    
+                    taskElement.appendChild(taskSpan);
+                    taskElement.appendChild(taskButton);
+                    
+                   
+                    tasksContainer.appendChild(taskElement);
+                    
+                    
+                    document.getElementById("text").value="";
+                }
+            }
+            function dlt() {
+                         var tasksContainer = document.getElementById('tasks');
+                         tasksContainer.innerHTML = ""; 
+               }  
+    </script>
+</body>
+</html
